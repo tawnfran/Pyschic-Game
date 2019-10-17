@@ -26,6 +26,7 @@
         var wins = 0;
         var losses = 0;
         var letterGuessed = [];
+        var score = 0;
 
         //3. create an array that lists out all possible options (a-z??)
         var computerPick = "abcdefghijklmnopqrstuvwxyz"
@@ -44,10 +45,10 @@
 
             // Function that updates the score...
             function updateScore() {
-                document.querySelector("#score").textContent = "Score: " + score;
+                document.getElementById("wins-so-far-span").textContent = score;
             }
             // If they guess the correct answer, increase and update score, alert them they got it right.
-            if (userInput === computerPick[computerIndex].a) {
+            if (userGuess === computerPick) {
                 alert("Correct!");
                 score++;
                 updateScore();
