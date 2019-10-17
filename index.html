@@ -27,13 +27,23 @@
         var losses = 0;
         var letterGuessed = [];
         var score = 0;
+        var lossesScore = 0;
+        var guessesRemaining = 5;
 
         //3. create an array that lists out all possible options (a-z??)
         var computerPick = "abcdefghijklmnopqrstuvwxyz"
 
         //    How user randomly selects a key
-        var computerPick = computerPick[Math.floor(Math.random() * computerPick.length)];
-        console.log("Computer Guess = " + computerPick);
+        var computerGuess = computerPick[Math.floor(Math.random() * computerPick.length)];
+        console.log("Computer Guess = " + computerGuess);
+
+        function updateScore() {
+            document.getElementById("wins-so-far-span").textContent = score;
+            document.getElementById("losses-so-far-span").textContent = lossesScore;
+            document.getElementById("guesses-left-span").textContent = guessesRemaining;
+            document.getElementById("letters-guessed-span").textContent = letterGuessed.join(" ");
+
+        }
 
         // Function is ran whenever user presses a key. 
         document.onkeyup = function (event) {
@@ -44,27 +54,37 @@
             // 4. Compare guesses against one and determine results- Solution- Using Conditional statements 
 
             // Function that updates the score...
-            function updateScore() {
-                document.getElementById("wins-so-far-span").textContent = score;
-            }
+           
             // If they guess the correct answer, increase and update score, alert them they got it right.
-            if (userGuess === computerPick) {
+            if (userGuess == computerGuess) {
                 alert("Correct!");
                 score++;
+                guessesRemaining = 5;
+                letterGuessed = [];
+                computerGuess = computerPick[Math.floor(Math.random() * computerPick.length)];
+                console.log("Computer Guess = " + computerGuess);
                 updateScore();
-
+                
             }
             // If wrong, alert them they are wrong.
             else {
                 alert("Wrong!");
+                guessesRemaining--;
+                
+                if(guessesRemaining == 0) {
+                    guessesRemaining = 5;
+                    lossesScore++;
+                    letterGuessed = [];
+                    computerGuess = computerPick[Math.floor(Math.random() * computerPick.length)];
+                    console.log("Computer Guess = " + computerGuess);
+                } else {
+                    letterGuessed.push(userGuess);
+                }
+
+                updateScore();
             }
-            //this logic determins the outcome of game (win/loss/) and adds appropriate number
+            
         }
-        // anyway to say "everything but ---"?
-
-        //5. once condition is met, store result in counter variables.
-
-        // create a variable to hold new HTML. The HTML will keep track of the user and computer guesses, and wins/losses.
     </script>
 
 </body>
