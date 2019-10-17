@@ -12,66 +12,69 @@
     <!---1. Have output for user instructions. -->
     <div id="game">
         <p>Guess what letter I'm thinking of </p>
+        <p>Letters Guessed: <span id="letters-guessed-span"></span></p>
     </div>
 
     <script type="text/javascript">
         // 2. Get user input. Obtain user input thru keypress. Store info in variable for later use. 
 
-        var wins = 0,
-            losses = 0;
+        var wins = 0;
+        var losses = 0;
+        var letterGuessed = [];
+        //3. create an array that lists out all possible options (a-z??)
+        var computerPick = "abcdefgh"
+
+        //    How user randomly selects a key
+        var computerPick = computerPick[Math.floor(Math.random() * computerPick.length)];
+        console.log("Computer Guess = " + computerPick);
 
         // Function is ran whenever user presses a key. 
         document.onkeyup = function (event) {
             // Determine which key was pressed 
             var userGuess = event.key;
-
-            //3. create an array that lists out all possible options (a-z??)
-            var computerPick = [" ", " "]
-
-            //    How user randomly selects a key
-            var computerPick = computerPick[Math.floor(Math.random() * computerPick.length)];
+            console.log("user Guess is " + userGuess);
 
             // 4. Compare guesses against one and determine results- Solution- Using Conditional statements 
-            if ((userGuess === "t") || (userGuess === "m") || (userGuess === "f")) {
+
+              // If they guess the correct answer, increase and update score, alert them they got it right.
+        if (userInput === questions[questionIndex].a) {
+          alert("Correct!");
+          score++;
+          updateScore();
+          
+
+            // this logic determins the outcome of game (win/loss/) and adds appropriate number 
+
+            // anyway to say "everything but ---"?
+
+            //5. once condition is met, store result in counter variables. 
+
+            // create a variable to hold new HTML. The HTML will keep track of the user and computer guesses, and wins/losses. 
+            // var html =
+            //         "<p>You chose: " + userGuess + "</p>" +
+            //         "<p>The computer chose: " + computerPick + "</p>" +
+            //         "<p>wins: " + wins + "</p>" +
+            //         "<p>losses: " + losses + "</p>" +
+            //         "<p>guesses left: " + guessesLeft + "</p>"
+            // "<p>guesses so far: " + guessesSoFar + "</p>";
 
 
-                // this logic determins the outcome of game (win/loss/) and adds appropriate number 
-                wins++;
-                if ((userGuess === "t") || (userGuess === "m") || (userGuess === "f")) {
-                } else if ((userGuess === "t") && 
+
+
+            //   1.  Guess what letter I'm thinking of
+
+            // 2. Wins: (# of times the user has guessed the letter correctly)
+
+            // 2. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+            // 3. Guesses Left: (# of guesses left. This will update)
+
+            // 4. Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+
+            // 5. When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+
+            // 6. When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
         }
-            losses++;
-            // anyway to say "everything but t,m &f? "
-        } else if ((userGuess === "z") &&
-
-        //5. once condition is met, store result in counter variables. 
-
-// create a variable to hold new HTML. The HTML will keep track of the user and computer guesses, and wins/losses. 
-        var html = 
-        "<p>You chose: " + userGuess + "</p>" + 
-        "<p>The computer chose: " + computerPick + "</p>" +
-        "<p>wins: " + wins + "</p>" +
-        "<p>losses: " + losses + "</p>" +
-        "<p>guesses left: " + guessesLeft + "</p>"
-        "<p>guesses so far: " + guessesSoFar + "</p>";
-
-
-
-
-//   1.  Guess what letter I'm thinking of
-
-// 2. Wins: (# of times the user has guessed the letter correctly)
-
-// 2. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
-
-// 3. Guesses Left: (# of guesses left. This will update)
-
-// 4. Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
-
-// 5. When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
-
-// 6. When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
-
     </script>
 </body>
 
