@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pyshic Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Psychic Game</title>
 </head>
 
 <body>
     <html>
     <!---1. Have output for user instructions. -->
     <div id="game">
-        <p>Guess what letter I'm thinking of </p>
+        <h1>Psychic Game</h1>
+        <h2>Guess what letter I'm thinking of </h2>
+        <img src="assets/images/psychic.jpg">
         <p>Letters Guessed: <span id="letters-guessed-span"></span></p>
         <p>Guesses Left: <span id="guesses-left-span"></span></p>
         <p>Wins: <span id="wins-so-far-span"></span></p>
@@ -54,7 +57,7 @@
             // 4. Compare guesses against one and determine results- Solution- Using Conditional statements 
 
             // Function that updates the score...
-           
+
             // If they guess the correct answer, increase and update score, alert them they got it right.
             if (userGuess == computerGuess) {
                 alert("Correct!");
@@ -64,14 +67,14 @@
                 computerGuess = computerPick[Math.floor(Math.random() * computerPick.length)];
                 console.log("Computer Guess = " + computerGuess);
                 updateScore();
-                
+
             }
             // If wrong, alert them they are wrong.
             else {
                 alert("Wrong!");
                 guessesRemaining--;
-                
-                if(guessesRemaining == 0) {
+
+                if (guessesRemaining == 0) {
                     guessesRemaining = 5;
                     lossesScore++;
                     letterGuessed = [];
@@ -83,7 +86,7 @@
 
                 updateScore();
             }
-            
+
         }
     </script>
 
